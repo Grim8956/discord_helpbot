@@ -15,7 +15,7 @@ class MapleStoryCog(commands.Cog):
         self.yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
-    @commands.command(name='메이플')
+    @commands.command(name='내캐릭터')
     async def get_maple_info(self, ctx, character_name: str):
         # 1단계: 캐릭터 이름으로 ocid 조회
         ocid_url = f"https://open.api.nexon.com/maplestory/v1/id?character_name={character_name}"
@@ -42,7 +42,8 @@ class MapleStoryCog(commands.Cog):
             description=f"기준일: {self.yesterday}",
             color=discord.Color.orange()
         )
-        embed.set_thumbnail(url=char_data.get('character_image'))
+        # 썸네일 대신 더 큰 이미지로 표시
+        embed.set_image(url=char_data.get('character_image'))
         embed.add_field(name="레벨", value=f"Lv. {char_data.get('character_level')}", inline=True)
         embed.add_field(name="직업", value=char_data.get('character_class'), inline=True)
         embed.add_field(name="서버", value=char_data.get('world_name'), inline=True)
@@ -51,5 +52,5 @@ class MapleStoryCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-def setup(bot):
-    bot.add_cog(MapleStoryCog(bot))
+async def setup(bot):
+    await bot.add_cog(MapleStoryCog(bot))

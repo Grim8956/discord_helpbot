@@ -218,5 +218,5 @@ class ApexCog(commands.Cog):
         except Exception as e:
             await ctx.send(f"테스트 중 오류가 발생했습니다: {e}")
 
-def setup(bot):
-    bot.add_cog(ApexCog(bot))
+async def setup(bot):
+    await bot.add_cog(ApexCog(bot))
