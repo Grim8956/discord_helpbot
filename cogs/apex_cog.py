@@ -8,7 +8,7 @@ import asyncio
 # 에이펙스 레전드 영어-한글 맵 이름 매핑
 MAP_NAME_MAP = {
     "Broken Moon": "브로큰 문",
-    "Storm Point": "스톰포인트",
+    "Storm Point": "좆톰포인트",
     "E-District": "E-디스트릭트",
     "Olympus": "올림푸스",
     "World's Edge": "세상의 끝",

@@ -19,11 +19,14 @@ async def on_ready():
     print('-----------------------------------------')
     
     # Cogs 로드
-    try:
-        bot.load_extension('cogs.apex_cog')
-        print("✅ ApexCog가 성공적으로 로드되었습니다!")
-    except Exception as e:
-        print(f"❌ ApexCog 로드 실패: {e}")
+    cogs_to_load = ['cogs.apex_cog', 'cogs.emoji_cog']
+    
+    for cog in cogs_to_load:
+        try:
+            bot.load_extension(cog)
+            print(f"✅ {cog}가 성공적으로 로드되었습니다!")
+        except Exception as e:
+            print(f"❌ {cog} 로드 실패: {e}")
 
 # .env 파일에서 불러온 토큰으로 봇을 실행합니다.
 if __name__ == "__main__":
